@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "lHmNfaztc3k6pXdFIRiM+zLVSs0V9IVGM+7c8lAayM2AuqJinb7WoHrHJrkVq3gUjLBp6SKVf0Zmb/itZqptcw==",
+  "success": true,
+  "projectFilePath": "/home/justronis/Developer/Study_Private/Fundamentos_Csharp/Csharp_Basics/OrientacaoObjeto/OrientacaoObjeto.csproj",
+  "expectedPackageFiles": [
+    "/home/justronis/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.12/microsoft.aspnetcore.app.ref.6.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}

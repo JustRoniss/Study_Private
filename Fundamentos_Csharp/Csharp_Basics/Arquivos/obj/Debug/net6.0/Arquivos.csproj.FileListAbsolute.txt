@@ -1,0 +1,15 @@
+/home/justronis/Workspace/dotnet_studyProjects/Basics/Arquivos/bin/Debug/net6.0/Arquivos
+/home/justronis/Workspace/dotnet_studyProjects/Basics/Arquivos/bin/Debug/net6.0/Arquivos.deps.json
+/home/justronis/Workspace/dotnet_studyProjects/Basics/Arquivos/bin/Debug/net6.0/Arquivos.runtimeconfig.json
+/home/justronis/Workspace/dotnet_studyProjects/Basics/Arquivos/bin/Debug/net6.0/Arquivos.dll
+/home/justronis/Workspace/dotnet_studyProjects/Basics/Arquivos/bin/Debug/net6.0/ref/Arquivos.dll
+/home/justronis/Workspace/dotnet_studyProjects/Basics/Arquivos/bin/Debug/net6.0/Arquivos.pdb
+/home/justronis/Workspace/dotnet_studyProjects/Basics/Arquivos/obj/Debug/net6.0/Arquivos.csproj.AssemblyReference.cache
+/home/justronis/Workspace/dotnet_studyProjects/Basics/Arquivos/obj/Debug/net6.0/Arquivos.GeneratedMSBuildEditorConfig.editorconfig
+/home/justronis/Workspace/dotnet_studyProjects/Basics/Arquivos/obj/Debug/net6.0/Arquivos.AssemblyInfoInputs.cache
+/home/justronis/Workspace/dotnet_studyProjects/Basics/Arquivos/obj/Debug/net6.0/Arquivos.AssemblyInfo.cs
+/home/justronis/Workspace/dotnet_studyProjects/Basics/Arquivos/obj/Debug/net6.0/Arquivos.csproj.CoreCompileInputs.cache
+/home/justronis/Workspace/dotnet_studyProjects/Basics/Arquivos/obj/Debug/net6.0/Arquivos.dll
+/home/justronis/Workspace/dotnet_studyProjects/Basics/Arquivos/obj/Debug/net6.0/ref/Arquivos.dll
+/home/justronis/Workspace/dotnet_studyProjects/Basics/Arquivos/obj/Debug/net6.0/Arquivos.pdb
+/home/justronis/Workspace/dotnet_studyProjects/Basics/Arquivos/obj/Debug/net6.0/Arquivos.genruntimeconfig.cache
