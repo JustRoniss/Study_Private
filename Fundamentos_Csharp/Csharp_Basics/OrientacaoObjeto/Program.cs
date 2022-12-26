@@ -18,6 +18,7 @@ Polimorfismo fornece a capacidade de herdar métodos da classe pai, e sobreescre
 using System.Reflection;
 using System.Security.AccessControl;
 using Cadastro;
+using ClasseAbstrata;
 using Heranca;
 
 // Aqui temos um exemplo de encapsulamento, afinal as propriedades ID e Descricao são privadas, e somente a própria classe tem um metodo que pode alterar estes valores. Sendo assim, estamos usando modificadores de acesso para gaarantir a integridade das propriedades ID e Descricao 
@@ -83,6 +84,39 @@ namespace ClasseSelada
 	// public class TesteSealed : Configuracao  - Isto não é permitido, afinal, Configuracao é uma classe selada
 }
 
+namespace ClasseAbstrata
+{
+	public abstract class Carro // Uma classe abstrata não pode ser instanciada. Ela serve para ser a classe "pai" de outras classes, por meio da Herança ou Interfaces;
+	{
+		public string Modelo { get; set; }
+		public int Ano { get; set; }
+
+		public abstract int GetQuantidadesDePortas(); // Estamos criando um metodo abstrato dentro da classe abstrata Carro. Ao fazer isto, estamos forçando que as classes que pretendem herdar da classe Carro, implementem o metodo GetQuantidadeDePortas
+	}
+
+	public class CarroEletrico : Carro
+	{
+		public int ConsumoEletrico { get; set; }
+
+		public override int GetQuantidadesDePortas() // Aqui estamos utilizando a palavra reservada override, pois precisamos sobreescrever o metodo GetQuantidadeDePortas, que é um metodo abstrato incompleto, sendo assim, somos forçados a implementar esse metodo nas classes que herdam da classe abstrata Carro
+		{
+			return 4;
+		}
+	}
+
+	public class CarroMotorConvencional : Carro
+	{
+		public int ConsumoCombustivel { get; set; }
+
+		public override int GetQuantidadesDePortas()
+		{
+			return 2;
+		}
+	}
+}
+
+
+
 namespace OrientacaoObjeto
 {
 	public class Program
@@ -119,7 +153,14 @@ namespace OrientacaoObjeto
 			pessoa2.DescricaoDoenca = "Cadeirante";
 			
 			Console.WriteLine($"Pessoa. Nome: {pessoa2.PrimeiroNome} {pessoa2.SegundoNome}. CPF = {pessoa2.CPF}. Descrição deficiencia = {pessoa2.DescricaoDoenca}");
-			
+
+			// var carro1 = new Carro(); - Não podemos instanciar um novo carro a partir da classe Carro, porque Carro é uma classe abstrata. Classes abstratas não podem ser instanciadas pois servem para ser um tipo de "modelo" a ser herdado por outras classes;
+
+			var carro1 = new CarroEletrico();
+			carro1.Modelo = "Tesla";
+			carro1.Ano = 2022;
+			Console.WriteLine($"Carro - Modelo: {carro1.Modelo} Ano: {carro1.Ano}. Quantidade de portas: {carro1.GetQuantidadesDePortas()}");
+
 
 
 		}
