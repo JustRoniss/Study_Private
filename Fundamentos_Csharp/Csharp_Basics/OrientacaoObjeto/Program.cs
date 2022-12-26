@@ -20,6 +20,7 @@ using System.Security.AccessControl;
 using Cadastro;
 using ClasseAbstrata;
 using Heranca;
+using Inteface;
 using Microsoft.VisualBasic.CompilerServices;
 using Record;
 
@@ -149,6 +150,34 @@ namespace Record
 	
 }
 
+namespace Inteface // Uma interface é uma especie de contrato, onde definimos as operações que um objeto deverá implementar
+{
+	public interface INotificacao
+	{
+		public string Descricao { get; set; }
+		public void Notificar(string txtNotificacao); //Observe que este metodo não faz nada. Isto é uma assinatura da interface, ou seja, as classes que irão herdar dessa interface serão obrigados a implementar este metodo
+	}
+
+	public class NotificacaoCliente : INotificacao
+	{
+		public string Descricao { get; set; }
+		public void Notificar(string txtNotificacao)
+		{
+			Console.WriteLine(txtNotificacao);
+		}
+	}
+
+	public class NotificacaoFuncionario : INotificacao
+	{
+		public string Descricao { get; set; }
+
+		public void Notificar(string txtNotificacao)
+		{
+			Console.WriteLine(txtNotificacao);
+		}
+	}
+}
+
 
 namespace OrientacaoObjeto
 {
@@ -216,7 +245,14 @@ namespace OrientacaoObjeto
 			var curso5 = curso4 with { Nome = "Ingles" };
 			Console.WriteLine($"Curso. Nome = {curso5.Nome}. ID = {curso5.Id}"); // Record neste momento me pareceu um pouco complicado de explicar em palavras seu funcionamento, mas não vou me preocupar com isso agora... Vamos seguir e futuramente, quando precisarmos do Record, lembrarei que ele existe
 
+			var notificacaoCliente = new NotificacaoCliente();
+			notificacaoCliente.Descricao = "Envio de mensagem via e-mail";
+			notificacaoCliente.Notificar("Olá caro cliente, estamos lhe notificando que sua entrega chegou!");
 
+			var notificacaoFuncionario = new NotificacaoFuncionario { Descricao = "Envio de mensagem via SMS" };
+			notificacaoFuncionario.Notificar("Caro colaborador, lhe desejamos um feliz natal e um prospero ano novo");
+			
+			
 
 		}
 	}
