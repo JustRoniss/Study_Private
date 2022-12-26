@@ -20,6 +20,8 @@ using System.Security.AccessControl;
 using Cadastro;
 using ClasseAbstrata;
 using Heranca;
+using Microsoft.VisualBasic.CompilerServices;
+using Record;
 
 // Aqui temos um exemplo de encapsulamento, afinal as propriedades ID e Descricao são privadas, e somente a própria classe tem um metodo que pode alterar estes valores. Sendo assim, estamos usando modificadores de acesso para gaarantir a integridade das propriedades ID e Descricao 
 namespace Cadastro
@@ -57,7 +59,6 @@ namespace Cadastro
 	}
 }
 
-
 namespace Heranca
 {
 	public class Pessoa
@@ -72,7 +73,6 @@ namespace Heranca
 		public string DescricaoDoenca { get; set; }
 	}
 }
-
 
 namespace ClasseSelada
 {
@@ -115,6 +115,39 @@ namespace ClasseAbstrata
 	}
 }
 
+namespace Record
+{
+	public class CursoSemRecord //Nesta classe, precisamos sobrescrever os metodo Equals e o operator == para fazer a validação que precisamos, no caso validar se um objeto é igual ao outro mediante o valor do ID e da Descricao.
+	{
+		public int Id { get; set; }
+		public string Nome { get; set; }
+
+		public override bool Equals(object? obj)
+		{
+			if (obj == null) return false;
+			if (obj is CursoSemRecord curso)
+			{
+				return Id == curso.Id && Nome == curso.Nome;
+			}
+			
+			return base.Equals(obj);
+		}
+		
+
+		public static bool operator ==(CursoSemRecord a, CursoSemRecord b)
+		{
+			return a.Equals(b);
+		}
+
+		public static bool operator !=(CursoSemRecord a, CursoSemRecord b)
+		{
+			return !(a == b);
+		}
+	}
+
+	public record CursoComRecord(int Id, string Nome);
+	
+}
 
 
 namespace OrientacaoObjeto
@@ -136,7 +169,7 @@ namespace OrientacaoObjeto
 			
 			Console.WriteLine("Id do produto: " + produto2.GetId() + " Descrição: " + produto2.GetDescricao()+ " Estoque: " + estoque_produto2);
 			
-			//------------------------------------------------------------------------------------------------------------------------------------------------------
+			//HERANCA-----------------------------------------------------------------------------------------------------------------------------------------------------
 
 			var pessoa1 = new Pessoa();
 			pessoa1.PrimeiroNome = "Ronaldo";
@@ -160,6 +193,28 @@ namespace OrientacaoObjeto
 			carro1.Modelo = "Tesla";
 			carro1.Ano = 2022;
 			Console.WriteLine($"Carro - Modelo: {carro1.Modelo} Ano: {carro1.Ano}. Quantidade de portas: {carro1.GetQuantidadesDePortas()}");
+			
+			var carro2 = new CarroMotorConvencional
+			{
+				Modelo = "Fusca",
+				Ano = 1995
+			};
+			Console.WriteLine($"Carro - Modelo: {carro2.Modelo} Ano: {carro2.Ano}. Quantidade de portas: {carro2.GetQuantidadesDePortas()}");
+
+			//------------------------------------------------------------------------------------------------------------------------------------------------------
+
+			var curso1 = new CursoSemRecord{Id = 1, Nome = "Csharp"};
+			var curso2 = new CursoSemRecord{Id = 1, Nome = "Csharp"};
+			Console.WriteLine(curso1 == curso2); // irá retornar falso, mesmo que o Id e descrição sejam iguais. Porem, no namespace Record, classe CursoSemRecord, sobreescrevemos o operador == para utilizar o Equals que tambem sobrescrevemos para validar o conteudo da propriedade ID e Nome
+			Console.WriteLine(curso1.Equals(curso2)); // Aqui retornou true, porque no namespace Record, classe CursoSemRecord, sobrescrevemos o metodo Equals para fazer uma validação no ID e Nome do curso;
+
+			var curso3 = new CursoComRecord(1, "Csharp");
+			var curso4 = new CursoComRecord(1, "Csharp");
+			Console.WriteLine(curso3 == curso4); // Utilizando Record não precisamos sobrescrever metodos para verificar se as propriedades são iguais, como fizemos com a classe CursoSemRecord
+			
+			// utilizando Record também podemos criar uma nova instancia apontando para outra instancia e modificando as propriedades que queremos. Exemplo
+			var curso5 = curso4 with { Nome = "Ingles" };
+			Console.WriteLine($"Curso. Nome = {curso5.Nome}. ID = {curso5.Id}"); // Record neste momento me pareceu um pouco complicado de explicar em palavras seu funcionamento, mas não vou me preocupar com isso agora... Vamos seguir e futuramente, quando precisarmos do Record, lembrarei que ele existe
 
 
 
