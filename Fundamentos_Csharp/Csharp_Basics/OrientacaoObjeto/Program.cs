@@ -22,8 +22,14 @@ namespace Cadastro
 {
 	public class Produto
 	{
+		public Produto(int estoque) // Aqui criamos o construtor da classe Produto, que recebe como parametro um valor inteiro, que é justamente o valor que será setado na propriedade da classe readonly
+		{
+			Estoque = estoque;
+		}
 		private int Id = 1;
 		private string Descricao { get; set; }
+
+		public readonly int Estoque;  //temos essa propriedade somente leitura, sendo assim, somente o construtor da classe tem permissão de altera-la
 
 		public void SetDescricao(string descricao)
 		{
@@ -53,11 +59,20 @@ namespace OrientacaoObjeto
 	{
 		static void Main(string[] args)
 		{
-			var produto = new Cadastro.Produto();  //aqui estamos chamando um outro namespace, por isto usamos Cadastro.Produto
+			var produto = new Cadastro.Produto(2);  //aqui estamos chamando um outro namespace, por isto usamos Cadastro.Produto
 			produto.SetId(1);
 			produto.SetDescricao("Computador montado");
 			Console.WriteLine("Id do produto: " + produto.GetId() + " Descrição: " + produto.GetDescricao());
+
+
+			var produto2 = new Cadastro.Produto(5);
+			produto2.SetId(2);
+			produto2.SetDescricao("Mouse");
+			var estoque_produto2 = produto2.Estoque;
 			
+			Console.WriteLine("Id do produto: " + produto2.GetId() + " Descrição: " + produto2.GetDescricao()+ " Estoque: " + estoque_produto2);
+
+
 		}
 	}
 }
