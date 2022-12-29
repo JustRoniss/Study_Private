@@ -35,5 +35,6 @@ public class Basics
         Console.WriteLine(nome);
         nome = nome.ToUpper();
         Console.WriteLine(nome);
+        Console.WriteLine("teste");
     }
 }
