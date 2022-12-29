@@ -35,6 +35,29 @@ public class Basics
         Console.WriteLine(nome);
         nome = nome.ToUpper();
         Console.WriteLine(nome);
+
+        string nomeArquivo = "2022_12_30_backup.bak";
+        string ano = nomeArquivo[..4]; // aqui estamos utilizando range, neste caso irá pegar os 4 primeiros digitos da string nomeArquivo
+        Console.WriteLine(ano);
         
+        string extensaoArquivo = nomeArquivo[^3..]; // Neste caso vamos pegar os ultimos 3 caracteres da string nomeArquivo
+        Console.WriteLine(extensaoArquivo);
+
+        string nomeArquivoSemExtensao = nomeArquivo[..^4]; // Irá retornar a string, com exceção dos ultimos 4 caracteres;
+        Console.WriteLine(nomeArquivoSemExtensao);
+        
+        Console.WriteLine("Contem nome: " + nomeArquivo.Contains("backup")); // Utilizamos o contains para verificar se determinada string contem determinado conteudo. Neste caso, verifiquei se na string nomeArquivo contem a "backup". Este metodo retorna um booleano
+
+        string nomeArquivoFormatado = nomeArquivo.Trim('_'); //aqui iremos remover todos os "_" que contem na string nomeArquivo; Se usarmos o trim com parametro vazio, ele irá remover espaços da string.
+        Console.WriteLine(nomeArquivoFormatado);
+        
+        Console.WriteLine("Inicia com 2022? " + nomeArquivo.StartsWith("2022")); //Vericando se a string nomeArquivo inicia com "2022". Retorna um booleano;
+        Console.WriteLine("Termina com .bak? " + nomeArquivo.EndsWith(".bak")); // Verificando se a string nomeArquivo termina com ".bak". Retorna um booleano.
+
+        string nomeArquivoExtensaoPDF = nomeArquivo.Replace(".bak", ".pdf"); // O replace tenta encontrar o valor mecionado na primeira propriedade do parametro, neste caso ".bak", se encontrar substitui por um novo valor ".pdf". Se não encontrar, não faz nada e também não retorna erro.
+        Console.WriteLine(nomeArquivoExtensaoPDF);
+        
+        Console.WriteLine(nomeArquivoExtensaoPDF.Length); //retorna a quantidade de caracteres que possuim na string nomeArquivoExtensaoPDF, incluido caracteres especiais, espaços... Qualquer conteudo presente na string, conta como caractere.
+
     }
 }
