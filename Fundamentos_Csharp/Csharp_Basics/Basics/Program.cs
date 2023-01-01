@@ -1,5 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using Microsoft.VisualBasic;
+
 namespace Program;
 
 public class Basics
@@ -58,6 +60,75 @@ public class Basics
         Console.WriteLine(nomeArquivoExtensaoPDF);
         
         Console.WriteLine(nomeArquivoExtensaoPDF.Length); //retorna a quantidade de caracteres que possuim na string nomeArquivoExtensaoPDF, incluido caracteres especiais, espaços... Qualquer conteudo presente na string, conta como caractere.
+
+        
+        //Datas------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        var date1 = new DateTime(2012, 12, 02);
+        var date2 = new DateTime(2016, 05, 23, 21, 05, 43);
+        var date3 = DateTime.Parse("2022/12/22 19:15:58");
+
+        var date4 = DateTime.Now;
+        Console.WriteLine(date4);
+        var date5 = DateTime.Today;
+        Console.WriteLine(date5);
+
+       Console.WriteLine(date3.ToString("dd-MM-yyyy"));
+       Console.WriteLine(date3.ToString("dd/MM/yyyy"));
+       Console.WriteLine(date3.ToString("dd*MM*yyyy"));
+       Console.WriteLine(date3.ToString("yyyy"));
+
+       var dataOffSet1 = new DateTimeOffset(date2, new TimeSpan(-3, 0, 0));
+       Console.WriteLine(dataOffSet1.LocalDateTime);
+       Console.WriteLine(dataOffSet1.UtcDateTime);
+       
+       //SUBTRAINDO DATA
+
+       var date6 = DateTime.Now;
+       var date7 = DateTime.Parse("2022-01-01");
+
+       var diff = date6 - date7;
+       Console.WriteLine(diff.TotalDays);
+       Console.WriteLine((int)diff.TotalDays);
+
+       var diff2 = date6.Subtract(date7);
+       Console.WriteLine(diff2);
+       Console.WriteLine((int)diff2.TotalDays);
+       
+       
+       //ADICIONANDO DATA
+
+       var date8 = DateTime.Now;
+       Console.WriteLine(date8.AddDays(7).ToString("dd-MM-yyyy"));
+       Console.WriteLine(date8.AddMonths(7).ToString("dd-MM-yyyy"));
+       Console.WriteLine(date8.AddYears(7).ToString("dd-MM-yyyy"));
+       
+       Console.WriteLine(date8.AddHours(2).ToString("HH:mm:ss"));
+       Console.WriteLine(date8.AddMinutes(30).ToString("HH:mm:ss"));
+       Console.WriteLine(date8.AddSeconds(60).ToString("HH:mm:ss"));
+       
+       
+       // Recuperar dia da semana de uma data. O idioma exibido é o idioma do sistema operacional.
+       Console.WriteLine(date8.DayOfWeek);
+       Console.WriteLine(date2.DayOfWeek);
+       
+
+        //DateOnly
+
+        var somenteData1 = new DateOnly(2022,12,2);
+        var somenteData2 = DateOnly.Parse("2022-12-01");
+        
+        Console.WriteLine(somenteData1.ToString("dd/MM/yyyy"));
+        
+        //TimeOnly
+
+        var somenteHora1 = new TimeOnly(23, 40, 00);
+        var somenteHora2 = TimeOnly.Parse("23:40:00");
+        Console.WriteLine(somenteHora1);
+        Console.WriteLine(somenteHora2.ToString("HH:m:s"));
+        
+        
+
 
     }
 }
