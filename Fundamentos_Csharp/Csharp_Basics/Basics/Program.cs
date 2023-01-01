@@ -127,8 +127,50 @@ public class Basics
         Console.WriteLine(somenteHora1);
         Console.WriteLine(somenteHora2.ToString("HH:m:s"));
         
+        //Exception------------------------------------------------------------------------------------------------------------------------------------------------------
         
+        /* Exceções basicamente são os erros que acontecem em seu programa em tempo de execução e são capturados por um mecanismo do .NET chamado exceptions, por meio de
+         * uma exception/exceção é possível inclusive, saber em qual linha de código ocorreu o erro, tornando mais fácil a identificação e solução do problema. */
+        
+        
+        // Gerando uma Exception
 
+        while (true)
+        {
+            Console.Write("Informe um número(número 0 irá gerar uma exceção): ");
+            var numeroInput = Console.ReadLine();
+            var resultado = 10 / int.Parse(numeroInput);
+            Console.WriteLine(resultado);
+            System.Threading.Thread.Sleep(1000);
+            Console.Write("[Digite] 1 para sair do loop ou qualquer tecla para continuar: ");
+            var sair = int.Parse(Console.ReadLine());
+            if (sair == 1) break;
+            
+        } // Ao digitar 0, irá gerar uma exceção automaticamente pelo .NET, afinal não é possivel dividir um número por 0. Quando uma Exception acontece, e não existe um tratamento para mesma, o progroma é encerrado.
+        
+        //Tratando uma Exception
+        Console.WriteLine("Você saiu do primeiro Loop, agora está num loop com tratamento da exceção");
+        while (true)
+        {
+            try
+            {
+                
+                Console.Write("Informe um número(número 0 irá gerar uma exceção): ");
+                var numeroInput = Console.ReadLine();
+                var resultado = 10 / int.Parse(numeroInput);
+                Console.WriteLine(resultado);
+                System.Threading.Thread.Sleep(1000);
+                Console.WriteLine("[Digite] 1 para sair do loop ou qualquer tecla para continuar");
+                var sair = int.Parse(Console.ReadLine());
+                if (sair == 1) break;
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("Você caiu na trativa de exceção pois digitou 0 " + exception.Message + exception.StackTrace);
+            }
+        }
+        
+        
 
     }
 }
