@@ -13,7 +13,7 @@ namespace CursoCSharp
             });
 
             central.SelecionarEExecutar();
-            Console.WriteLine("Teste");
+            
         }
     }
 }
